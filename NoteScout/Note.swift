@@ -3,6 +3,7 @@ import SwiftUI
 struct Note: View {
     
     var note: String = "Empty note"
+    var date: String = "Unknown date"
     
     var body: some View {
         NavigationLink(destination: NoteScreen()) {
@@ -13,7 +14,7 @@ struct Note: View {
                         .lineSpacing(5)
                         .foregroundColor(.black)
                     Spacer()
-                    Text("23 Aug 2020")
+                    Text(date)
                         .font(.system(size: 16))
                         .foregroundColor(.black)
                 }
