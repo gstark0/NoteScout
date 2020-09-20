@@ -5,9 +5,7 @@ struct Note: View {
     var note: String = "Empty note"
     
     var body: some View {
-        Button(action: {
-            print("edit note...")
-        }) {
+        NavigationLink(destination: NoteScreen()) {
             HStack {
                 VStack(alignment: .leading) {
                     Text("\(self.note)")
