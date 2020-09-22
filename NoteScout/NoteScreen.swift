@@ -2,19 +2,20 @@ import SwiftUI
 
 struct NoteScreen: View {
     
-    @State private var note: String = "This is your note"
+    @ObservedObject var note: NoteData
     
     var body: some View {
         VStack {
-            TextEditor(text: $note)
+            TextEditor(text: $note.content)
                 .padding()
-                .background(Color(.red))
+                .background(note.color)
                 .edgesIgnoringSafeArea(.bottom)
-                .navigationBarTitle("20 Aug 2020")
+                .navigationBarTitle(note.date)
         }
     }
     
-    init() {
+    init(note: NoteData) {
         UITextView.appearance().backgroundColor = .clear
+        self.note = note
     }
 }
