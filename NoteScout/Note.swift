@@ -1,7 +1,7 @@
 import SwiftUI
 
 
-class NoteData: ObservableObject {
+class NoteData: ObservableObject, Identifiable {
     @Published var content: String = "Empty note..."
     var date: String
     @Published var color: Color = Color(red: 254/255, green: 165/255, blue: 123/255)

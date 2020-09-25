@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    var notes = [NoteData()]
+    @State var notes = [NoteData()]
     
     var body: some View {
         NavigationView {
             ZStack {
                 ScrollView {
                     VStack(spacing: 17) {
-                        ForEach(0..<notes.count) {
-                            Note(note: notes[$0])
+                        ForEach(notes) { note in
+                            Note(note: note)
                         }
                     }
                     .navigationBarTitle("NoteScout")
@@ -27,7 +27,7 @@ struct ContentView: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            print("Add note..")
+                            notes.insert(NoteData(), at: 0)
                         }) {
                             Image(systemName: "plus")
                                 .font(.system(size: 25))
