@@ -20,18 +20,18 @@ struct NoteScreen: View {
             HStack {
                 Spacer()
                 VStack(spacing: 5) {
-                    Circle()
-                        .fill(orange)
-                        .frame(width: 25, height: 25)
-                    Circle()
-                        .fill(blue)
-                        .frame(width: 25, height: 25)
-                    Circle()
-                        .fill(purple)
-                        .frame(width: 25, height: 25)
-                    Circle()
-                        .fill(yellow)
-                        .frame(width: 25, height: 25)
+                    ColorPick(color: orange, onPress: {
+                        self.note.color = self.orange
+                    })
+                    ColorPick(color: blue, onPress: {
+                        self.note.color = self.blue
+                    })
+                    ColorPick(color: purple, onPress: {
+                        self.note.color = self.purple
+                    })
+                    ColorPick(color: yellow, onPress: {
+                        self.note.color = self.yellow
+                    })
                 }
                     .padding(10)
                     .background(Color(.white))
@@ -45,5 +45,18 @@ struct NoteScreen: View {
     init(note: NoteData) {
         UITextView.appearance().backgroundColor = .clear
         self.note = note
+    }
+}
+
+struct ColorPick: View {
+    var color: Color
+    var onPress: () -> ()
+    
+    var body: some View {
+        Button(action: self.onPress) {
+            Circle()
+                .fill(color)
+                .frame(width: 25, height: 25)
+        }
     }
 }
